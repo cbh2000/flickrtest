@@ -24,9 +24,7 @@ class ImageViewController: UIViewController {
     }
     
     func setImage(with url: URL) {
-        imageView.sd_setImage(with: url)
         imageView.sd_setImage(with: url) { (image: UIImage?, _, _, _) in
-            self.imageView.image = image
             self.spinner.stopAnimating()
             self.spinner.isHidden = true
         }
