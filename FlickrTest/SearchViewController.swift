@@ -22,11 +22,24 @@ class SearchViewController: UICollectionViewController, UISearchBarDelegate, UIC
         
         collectionView!.register(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "photo")
         
-        // TODO: Testing needs to be performed on this to make sure it works on all iOS versions.
-        // I distinctly remember cases where the size of the view controller's view at this point
-        // was 600x600 and not the physical display size until *after* viewDidLoad was called.
-        // But this seems to work well on the iOS 10 simulator.
-        layout.itemSize = calculatePhotoSize()
+        updatePhotoSize()
+    }
+    
+    // NOTE: This is a workaround for when the image viewer rotates after being presented. That means
+    // when we re-appear our item size will be wrong.
+    //
+    // TODO: Make this a smoother transition.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.updatePhotoSize()
+    }
+    
+    func updatePhotoSize() {
+        let size = calculatePhotoSize()
+        if layout.itemSize != size {
+            layout.itemSize = size
+            layout.invalidateLayout()
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -45,11 +58,7 @@ class SearchViewController: UICollectionViewController, UISearchBarDelegate, UIC
         // interpolating between the two.
         coordinator.animate(alongsideTransition: { (context) in
             
-            // Update the photo size.
-            let photoSize = self.calculatePhotoSize()
-            if self.layout.itemSize != photoSize {
-                self.layout.itemSize = photoSize
-            }
+            self.updatePhotoSize()
             
             // Re-scroll to keep the user's position.
             if let pinpoint = pinpoint {
@@ -120,8 +129,7 @@ class SearchViewController: UICollectionViewController, UISearchBarDelegate, UIC
                 self.photos = searchResults.photos
                 self.collectionView!.reloadData()
             case .failure(let error):
-                // TODO: Display the error.
-                print("Search error: \(error)")
+                self.present(error.createAlert(title: "Search Error"), animated: true)
             }
         }
     }

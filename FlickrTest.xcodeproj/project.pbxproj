@@ -25,6 +25,7 @@
 		498D07F61D91C33300A94A87 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498D07F21D91C2EC00A94A87 /* WebImage.framework */; };
 		498D07F71D91C33300A94A87 /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 498D07F21D91C2EC00A94A87 /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		498D07FA1D91D7DC00A94A87 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498D07F91D91D7DC00A94A87 /* ImageViewController.swift */; };
+		498D07FC1D91E45500A94A87 /* ResponseError+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498D07FB1D91E45500A94A87 /* ResponseError+Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		498D07EF1D91AE2500A94A87 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		498D07F21D91C2EC00A94A87 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		498D07F91D91D7DC00A94A87 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		498D07FB1D91E45500A94A87 /* ResponseError+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ResponseError+Alert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				498D07E11D918B1A00A94A87 /* InfoPlistReader.swift */,
 				498D07E31D918D1F00A94A87 /* Response.swift */,
 				498D07E51D9194F800A94A87 /* JSONInstantiatable.swift */,
+				498D07FB1D91E45500A94A87 /* ResponseError+Alert.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				492C1FB61D9178100032F008 /* SearchViewController.swift in Sources */,
 				498D07E21D918B1A00A94A87 /* InfoPlistReader.swift in Sources */,
 				492C1FB41D9178100032F008 /* AppDelegate.swift in Sources */,
+				498D07FC1D91E45500A94A87 /* ResponseError+Alert.swift in Sources */,
 				498D07E41D918D1F00A94A87 /* Response.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

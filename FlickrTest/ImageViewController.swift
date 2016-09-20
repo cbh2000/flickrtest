@@ -11,11 +11,12 @@ import UIKit
 /**
  * Here, I decided to create the view controller programmatically, without the use of Storyboard.
  *
- * Sadly, there is no pinch to zoom, but you can rotate the phone into landscape. :-(
+ * Sadly, there is no pinch to zoom, but you can rotate the phone into landscape.
  */
 class ImageViewController: UIViewController {
     let imageView = UIImageView()
     let closeButton = UIButton()
+    let spinner = UIActivityIndicatorView()
     
     convenience init(imageURL: URL) {
         self.init(nibName: nil, bundle: nil)
@@ -24,6 +25,11 @@ class ImageViewController: UIViewController {
     
     func setImage(with url: URL) {
         imageView.sd_setImage(with: url)
+        imageView.sd_setImage(with: url) { (image: UIImage?, _, _, _) in
+            self.imageView.image = image
+            self.spinner.stopAnimating()
+            self.spinner.isHidden = true
+        }
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -39,6 +45,12 @@ class ImageViewController: UIViewController {
         // Makes it fade in instead of sliding in.
         modalTransitionStyle = .crossDissolve
         modalPresentationStyle = .overCurrentContext
+        
+        spinner.activityIndicatorViewStyle = .white
+        spinner.startAnimating()
+        view.addSubview(spinner)
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         // Configure the image view.
         imageView.backgroundColor = .clear
