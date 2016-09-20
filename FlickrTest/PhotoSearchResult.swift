@@ -13,6 +13,8 @@ struct PhotoSearchResult: JSONInstantiatable {
     let id: String
     let owner: String
     let title: String
+    let previewImageURL: URL
+    let fullSizeImageURL: URL
     
     fileprivate static func parseError(_ reason: String) -> JSONInstantiationError {
         return JSONInstantiationError.failedToParse(type: PhotoSearchResult.self, reason: reason)
@@ -38,5 +40,16 @@ struct PhotoSearchResult: JSONInstantiatable {
         self.id = id
         self.owner = owner
         self.title = title
+        
+        // Now, get the image URLs
+        guard let farmID = json["farm"] as? Int, let serverID = json["server"] as? String else {
+            throw PhotoSearchResult.parseError("Failed to parse farm or server.")
+        }
+        guard let secret = json["secret"] as? String else {
+            throw PhotoSearchResult.parseError("Failed to parse secret.")
+        }
+        
+        self.previewImageURL = URL(string: "https://farm\(farmID).staticflickr.com/\(serverID)/\(id)_\(secret)_q.jpg")!
+        self.fullSizeImageURL = URL(string: "https://farm\(farmID).staticflickr.com/\(serverID)/\(id)_\(secret)_o.jpg")!
     }
 }

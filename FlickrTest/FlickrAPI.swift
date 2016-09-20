@@ -15,20 +15,8 @@ class FlickrAPI {
     
     static let shared = FlickrAPI()
     
-    let apiKey: String
-    let apiBaseURL: URL
-    
-    init() {
-        do {
-            apiKey = try InfoPlistReader.getValue(key: "FlickrAPIKey", type: String.self, isValid: InfoPlistReader.flickrAPIKeyValidator)
-            let url = try InfoPlistReader.getValue(key: "FlickrAPIURL", type: String.self, isValid: InfoPlistReader.flickerURLValidator)
-            apiBaseURL = URL(string: url)!
-        } catch let error as InfoPlistReaderError {
-            fatalError("\(FlickrAPI.self): Failed to instantiate: \(error.localizedDescription), reason: \(error.failureReason)")
-        } catch let error {
-            fatalError("\(FlickrAPI.self): Failed to instantiate: \(error)")
-        }
-    }
+    let apiKey = InfoPlistReader.flickrAPIKey
+    let apiBaseURL = InfoPlistReader.flickrURL
     
     // Appends the given items to the URL as query parameters.
     fileprivate func createURL(with items: [String : String]) -> URL {

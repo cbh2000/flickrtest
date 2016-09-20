@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import WebImage
 
 protocol PhotoCellInterface: class {
-    func setImage(_ image: UIImage)
+    func setImage(url: URL)
     func setTitle(_ title: String)
 }
 
 extension PhotoCellInterface where Self: PhotoCell {
-    func setImage(_ image: UIImage) {
-        imageView.image = image
+    func setImage(url: URL) {
+        imageView.image = nil // In case it takes a while to come back, don't show the wrong one in the mean-time.
+        imageView.sd_setImage(with: url)
     }
     
     func setTitle(_ title: String) {

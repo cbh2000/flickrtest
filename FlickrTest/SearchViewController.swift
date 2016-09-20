@@ -25,8 +25,10 @@ class SearchViewController: UICollectionViewController, UISearchBarDelegate {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photo", for: indexPath) as! PhotoCellInterface
-        cell.setImage(UIImage())
-        cell.setTitle("This is a Title")
+        
+        let photo = photos[indexPath.row]
+        cell.setImage(url: photo.previewImageURL)
+        cell.setTitle(photo.title)
         return cell as! UICollectionViewCell
     }
     
