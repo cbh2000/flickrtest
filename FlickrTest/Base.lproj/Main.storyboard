@@ -38,7 +38,7 @@
                     <navigationItem key="navigationItem" id="OI9-BV-AsG">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="iuP-xh-ucp">
-                            <rect key="frame" x="8" y="6" width="359" height="33"/>
+                            <rect key="frame" x="8" y="5.5" width="359" height="33"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <searchBar contentMode="redraw" verticalCompressionResistancePriority="1000" searchBarStyle="minimal" placeholder="Search Photos" translatesAutoresizingMaskIntoConstraints="NO" id="zAu-Iy-Kvc">
