@@ -14,8 +14,8 @@ struct PhotoSearchResult: JSONInstantiatable {
     let owner: String
     let title: String
     
-    fileprivate static func parseError(_ reason: String) -> JSONParseError {
-        return JSONParseError.failedToParse(type: PhotoSearchResult.self, reason: reason)
+    fileprivate static func parseError(_ reason: String) -> JSONInstantiationError {
+        return JSONInstantiationError.failedToParse(type: PhotoSearchResult.self, reason: reason)
     }
     
     init(json: [String : Any]) throws {

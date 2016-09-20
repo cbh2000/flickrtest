@@ -10,10 +10,10 @@ import Foundation
 
 struct SearchResults: JSONInstantiatable {
     let photos: [PhotoSearchResult]
-    let atEnd: Bool
+    let pagesLeft: Int
     
-    fileprivate static func parseError(_ reason: String) -> JSONParseError {
-        return JSONParseError.failedToParse(type: SearchResults.self, reason: reason)
+    fileprivate static func parseError(_ reason: String) -> JSONInstantiationError {
+        return JSONInstantiationError.failedToParse(type: SearchResults.self, reason: reason)
     }
     
     init(json: [String : Any]) throws {
@@ -25,8 +25,8 @@ struct SearchResults: JSONInstantiatable {
             throw SearchResults.parseError("Missing page and/or pages in JSON.")
         }
         
-        // Can't do page == pages, because if there are no search results, then page == 1 and pages == 0.
-        atEnd = page >= pages
+        // If there are no search results, then page == 1 and pages == 0.
+        pagesLeft = max(0, pages - page)
         
         guard let photoList = photos["photo"] as? [[String : Any]] else {
             throw SearchResults.parseError("Missing photo list in JSON.")

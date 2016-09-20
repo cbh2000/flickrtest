@@ -10,7 +10,7 @@ import Foundation
 
 // This is more of a developer help tool for debugging than it is a localized error for the user.
 // The intention of this error is to not show it directly to the user, but merely print it in the logs.
-enum JSONParseError: Error {
+enum JSONInstantiationError: Error {
     case failedToParse(type: Any.Type, reason: String)
 }
 

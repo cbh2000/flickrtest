@@ -11,8 +11,11 @@ import Foundation
 enum ResponseError: Error {
     case unknown
     case networkError
-    case permissionError
-    case flickrError
+    case flickrError(description: String)
+    case parseError(error: JSONInstantiationError)
+    case notAuthorized
+    case notFound
+    case badRequest
 }
 
 // TODO: Extend ResponseError to conform to LocalizedError.
