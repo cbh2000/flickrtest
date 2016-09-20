@@ -10,7 +10,27 @@
 		{
 			"name": "flickr.photos.search",
 			"request": {
-				"url": "https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key={{api_key}}&text=pizza",
+				"url": "https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key={{api_key}}&text=pizza&per_page=25",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/javascript",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"api_key\": \"{{api_key}}\",\n\t\"method\": \"flickr.photos.search\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "flickr.photos.getSizes",
+			"request": {
+				"url": "https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&format=json&api_key={{api_key}}&photo_id=29700367912",
 				"method": "GET",
 				"header": [
 					{
