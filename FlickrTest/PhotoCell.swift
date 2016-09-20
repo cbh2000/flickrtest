@@ -13,12 +13,12 @@ import WebImage
 // It makes refactoring and reuse a bit easier since we can minimize
 // what is used by the outside world.
 protocol PhotoCellInterface: class {
-    func setImage(url: URL)
+    func setImage(with url: URL)
     func setTitle(_ title: String)
 }
 
 extension PhotoCellInterface where Self: PhotoCell {
-    func setImage(url: URL) {
+    func setImage(with url: URL) {
         imageView.image = nil // In case it takes a while to come back, don't show the wrong one in the mean-time.
         imageView.sd_setImage(with: url)
     }

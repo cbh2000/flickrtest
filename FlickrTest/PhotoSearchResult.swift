@@ -50,6 +50,6 @@ struct PhotoSearchResult: JSONInstantiatable {
         }
         
         self.previewImageURL = URL(string: "https://farm\(farmID).staticflickr.com/\(serverID)/\(id)_\(secret)_q.jpg")!
-        self.fullSizeImageURL = URL(string: "https://farm\(farmID).staticflickr.com/\(serverID)/\(id)_\(secret)_o.jpg")!
+        self.fullSizeImageURL = URL(string: "https://farm\(farmID).staticflickr.com/\(serverID)/\(id)_\(secret).jpg")!
     }
 }

@@ -24,6 +24,7 @@
 		498D07F31D91C2EC00A94A87 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498D07F21D91C2EC00A94A87 /* WebImage.framework */; };
 		498D07F61D91C33300A94A87 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498D07F21D91C2EC00A94A87 /* WebImage.framework */; };
 		498D07F71D91C33300A94A87 /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 498D07F21D91C2EC00A94A87 /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		498D07FA1D91D7DC00A94A87 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498D07F91D91D7DC00A94A87 /* ImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		498D07ED1D91ACA900A94A87 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		498D07EF1D91AE2500A94A87 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		498D07F21D91C2EC00A94A87 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
+		498D07F91D91D7DC00A94A87 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				492C1FB51D9178100032F008 /* SearchViewController.swift */,
 				498D07ED1D91ACA900A94A87 /* PhotoCell.xib */,
 				498D07EF1D91AE2500A94A87 /* PhotoCell.swift */,
+				498D07F91D91D7DC00A94A87 /* ImageViewController.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			files = (
 				498D07E91D91956500A94A87 /* SearchResults.swift in Sources */,
 				498D07F01D91AE2500A94A87 /* PhotoCell.swift in Sources */,
+				498D07FA1D91D7DC00A94A87 /* ImageViewController.swift in Sources */,
 				498D07EB1D91966B00A94A87 /* PhotoSearchResult.swift in Sources */,
 				498D07E61D9194F800A94A87 /* JSONInstantiatable.swift in Sources */,
 				498D07E01D9187C700A94A87 /* FlickrAPI.swift in Sources */,

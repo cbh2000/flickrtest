@@ -25,7 +25,7 @@ class SearchViewController: UICollectionViewController, UISearchBarDelegate, UIC
         // TODO: Testing needs to be performed on this to make sure it works on all iOS versions.
         // I distinctly remember cases where the size of the view controller's view at this point
         // was 600x600 and not the physical display size until *after* viewDidLoad was called.
-        // But this seems to work well on the simulator.
+        // But this seems to work well on the iOS 10 simulator.
         layout.itemSize = calculatePhotoSize()
     }
     
@@ -68,10 +68,16 @@ class SearchViewController: UICollectionViewController, UISearchBarDelegate, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photo", for: indexPath) as! PhotoCellInterface
         
         let photo = photos[indexPath.row]
-        cell.setImage(url: photo.previewImageURL)
+        cell.setImage(with: photo.previewImageURL)
         cell.setTitle(photo.title)
         
         return cell as! UICollectionViewCell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photo = photos[indexPath.row]
+        let imageViewer = ImageViewController(imageURL: photo.fullSizeImageURL)
+        present(imageViewer, animated: true)
     }
     
     // Given the screen's size, determine the optimal photo size, while taking up all available space.
