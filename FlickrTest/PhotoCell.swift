@@ -9,6 +9,9 @@
 import UIKit
 import WebImage
 
+// This interface is here to isolate the cell from the view controller.
+// It makes refactoring and reuse a bit easier since we can minimize
+// what is used by the outside world.
 protocol PhotoCellInterface: class {
     func setImage(url: URL)
     func setTitle(_ title: String)
@@ -26,8 +29,8 @@ extension PhotoCellInterface where Self: PhotoCell {
 }
 
 class PhotoCell: UICollectionViewCell, PhotoCellInterface {
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet fileprivate weak var imageView: UIImageView!
+    @IBOutlet fileprivate weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
