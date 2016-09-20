@@ -48,6 +48,7 @@ class ImageViewController: UIViewController {
         
         spinner.activityIndicatorViewStyle = .white
         spinner.startAnimating()
+        spinner.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(spinner)
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
