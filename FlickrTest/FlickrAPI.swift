@@ -8,20 +8,6 @@
 
 import Foundation
 
-fileprivate func validateFlickrAPIKey(_ key: String) -> Bool {
-    let wholeString = key.startIndex..<key.endIndex
-    let match = key.range(of: "([0-9]|[a-z]){32,32}", options: .regularExpression, range: wholeString, locale: nil)
-    return match?.lowerBound == key.startIndex && match?.upperBound == key.endIndex
-}
-
-fileprivate func validateFlickrURL(_ url: String) -> Bool {
-    // There are probably better ways to validate, but this should catch the egregious errors.
-    let url = URL(string: url)
-    
-    // The scheme must be https, because we haven't configured the app transport security settings yet.
-    return url != nil && url?.scheme?.lowercased() == "https" && url?.host != nil
-}
-
 class FlickrAPI {
     static let shared = FlickrAPI()
     
@@ -30,10 +16,10 @@ class FlickrAPI {
     
     init() {
         do {
-            apiKey = try readInfoPlist(key: "FlickrAPIKey", type: String.self, isValid: validateFlickrAPIKey)
-            let url = try readInfoPlist(key: "FlickrAPIURL", type: String.self, isValid: validateFlickrURL)
+            apiKey = try InfoPlistReader.getValue(key: "FlickrAPIKey", type: String.self, isValid: InfoPlistReader.flickrAPIKeyValidator)
+            let url = try InfoPlistReader.getValue(key: "FlickrAPIURL", type: String.self, isValid: InfoPlistReader.flickerURLValidator)
             apiBaseURL = URL(string: url)!
-        } catch let error as ReadInfoPlistError {
+        } catch let error as InfoPlistReaderError {
             fatalError("\(FlickrAPI.self): Failed to instantiate: \(error.localizedDescription), reason: \(error.failureReason)")
         } catch let error {
             fatalError("\(FlickrAPI.self): Failed to instantiate: \(error)")
