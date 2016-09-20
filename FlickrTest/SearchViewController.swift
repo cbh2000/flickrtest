@@ -29,6 +29,7 @@ class SearchViewController: UICollectionViewController, UISearchBarDelegate {
         let photo = photos[indexPath.row]
         cell.setImage(url: photo.previewImageURL)
         cell.setTitle(photo.title)
+        
         return cell as! UICollectionViewCell
     }
     

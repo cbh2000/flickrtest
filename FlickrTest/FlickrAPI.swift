@@ -97,6 +97,11 @@ class FlickrAPI {
         
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            // If the request is cancelled, don't execute the completion handler at all.
+            guard (error as? NSError)?.code != NSURLErrorCancelled else {
+                return
+            }
+            
             // Convert now while we're still on a worker queue.
             let converted = converter(data, response, error)
             
