@@ -19,6 +19,10 @@ struct PhotoSearchResult: JSONInstantiatable {
     }
     
     init(json: [String : Any]) throws {
+        //
+        // For large apps, this approach to class serialization is tedious. But since this app is simple, it'll do.
+        //
+        
         guard let id = json["id"] as? String else {
             throw PhotoSearchResult.parseError("Failed to parse id.")
         }

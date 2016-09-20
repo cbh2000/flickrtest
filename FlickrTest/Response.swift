@@ -19,6 +19,7 @@ enum ResponseError: Error {
 }
 
 // TODO: Extend ResponseError to conform to LocalizedError.
+// TODO: Provide an easy way to display error popups to the user via ResponseError.
 
 enum Response<T> {
     case success(body: T)

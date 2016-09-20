@@ -8,6 +8,16 @@
 
 import Foundation
 
+/**
+ Swift 3 merged NSError and Swift's native Error protocol.
+ 
+ Here, I experiment with the new Error protocol, LocalizedError, to provide better error reporting. Specifically,
+ to allow for better localization.
+ 
+ Normally, you'd do this for classes that interface with the user, like UIKit subclasses, so perhaps
+ the benefit is limited in this particular file.
+ */
+
 enum InfoPlistReaderError: Error {
     case missingInfoDictionary
     case missingInfoKey(key: String)

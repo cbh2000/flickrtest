@@ -17,6 +17,10 @@ struct SearchResults: JSONInstantiatable {
     }
     
     init(json: [String : Any]) throws {
+        //
+        // For large apps, this approach to class serialization is tedious. But since this app is simple, it'll do.
+        //
+        
         guard let photos = json["photos"] as? [String : Any] else {
             throw SearchResults.parseError("Missing photos key in JSON.")
         }
