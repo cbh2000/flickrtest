@@ -30,11 +30,11 @@ class PhotoCell: UICollectionViewCell, PhotoCellInterface {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        titleLabel.shadowColor = .black
-        titleLabel.shadowOffset = .zero
-        titleLabel.clipsToBounds = false
-        titleLabel.layer.shadowRadius = 5
-        
-        contentView.backgroundColor = .lightGray
+        let layer = titleLabel.layer
+        layer.shadowColor = UIColor.black.cgColor
+        layer.masksToBounds = false
+        layer.shadowRadius = 1
+        layer.shadowOpacity = 0.5
+        layer.shadowOffset = .zero
     }
 }
