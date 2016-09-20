@@ -10,6 +10,8 @@ import UIKit
 
 /**
  * Here, I decided to create the view controller programmatically, without the use of Storyboard.
+ *
+ * Sadly, there is no pinch to zoom, but you can rotate the phone into landscape. :-(
  */
 class ImageViewController: UIViewController {
     let imageView = UIImageView()
@@ -22,6 +24,10 @@ class ImageViewController: UIViewController {
     
     func setImage(with url: URL) {
         imageView.sd_setImage(with: url)
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     override func viewDidLoad() {
@@ -48,12 +54,19 @@ class ImageViewController: UIViewController {
         imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         // Configure the button.
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.setImage(UIImage(named: "close"), for: [])
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+        view.addSubview(closeButton)
         
+        // Layout close button
+        closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
+        closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 15).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
     
     func closeTapped() {
-        
+        dismiss(animated: true, completion: nil)
     }
 }
