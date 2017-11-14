@@ -1,6 +1,8 @@
 # flickrtest
 
-Requires Xcode 8. To install:
+Requires Xcode 8. **This example doesn't work properly when built with Xcode 9. An  update will be forthcoming.*
+
+To install:
 
 ```
 git clone https://github.com/cbh2000/flickrtest.git
